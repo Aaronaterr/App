@@ -2,8 +2,6 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Year</title>
-    <p style="opacity:0.7;">Version 1.0 - Built together with my best bud</p>"
     <link rel="stylesheet" href="style.css">
     <link rel="apple-touch-icon" href="icon.jpg">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -11,20 +9,26 @@
 
 <body>
     <div class="container">
-        <h1>Our First Year</h1>
+        <h1>The Molly Retention Programme</h1>
+        <p class="version">Version 1.0 - Built together with my best bud</p>
 
         <!-- Menu -->
         <div class="menu">
-            <button onclick="showSection('home')">Home</button>
+            <button onclick="showSection('days')">Days</button>
             <button onclick="showSection('love')">Reasons I haven't left yet</button>
             <button onclick="showSection('memory')">Memory</button>
             <button onclick="showSection('photo')">Photos</button>
             <button onclick="showSection('letters')">Letters</button>
         </div>
 
-        <!-- Home -->
-        <div id="home" class="section">
-            <p id="days"></p>
+        <!-- Days -->
+        <div id="daysSection" class="section">
+            <p class="days-line"> You've been putting up with me for </p>
+                <div class="days-row">
+                    <p id="daysNumber" class="days-number"></p>
+                    <p class="days-label">days</p>
+                </div>
+            <p id="daysText" class="days-text"></p>
         </div>
 
         <!-- Love -->

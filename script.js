@@ -4,8 +4,10 @@ const today = new Date();
 const diffTime = today - startDate;
 const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
-document.getElementById("days").innerText = 
-    "We've been together for " + days + " days!";
+document.getElementById("daysNumber").innerText = days;
+document.getElementById("daysText").innerText =
+       " and you still haven't dumped me. Yet."
+  
 
 // Love messages
 function showLove() {
@@ -33,6 +35,7 @@ function showMemory() {
     typeText("memory", random);
 }
 
+// Photos
 function showPhoto() {
     const photos = [
         "images/Molly Aaron and Nell.jpg",
@@ -47,6 +50,7 @@ function showPhoto() {
     img.style.display = "block";
 }
 
+// Letters
 function openLetter(type) {
     let message = "";
     if (type === "sad") {
@@ -61,8 +65,9 @@ function openLetter(type) {
     typeText("letterText", message);
 }
 
+// Navigation
 function showSection(section) {
-    const sections = ["home", "loveSection", "memorySection", "photoSection", "lettersSection"];
+    const sections = ["daysSection", "loveSection", "memorySection", "photoSection", "lettersSection"];
 
         sections.forEach(id => {
             const el = document.getElementById(id);
@@ -71,7 +76,7 @@ function showSection(section) {
         });
 
         let targetId = "";
-        if (section === "home") targetId = "home";
+        if (section === "days") targetId = "daysSection";
         if (section === "love") targetId = "loveSection";
         if (section === "memory") targetId = "memorySection";
         if (section === "photo") targetId = "photoSection";
@@ -85,8 +90,8 @@ function showSection(section) {
         }, 10);
     
 
-    if (section === "home") {
-        document.getElementById("home").style.display = "block";
+    if (section === "days") {
+        document.getElementById("daysSection").style.display = "block";
     }
     if (section === "love") {
         document.getElementById("loveSection").style.display = "block";
@@ -102,15 +107,23 @@ function showSection(section) {
     }
 }
 
+// Typing text effect
 function typeText(elementId, text) {
     let i = 0;
     const el = document.getElementById(elementId);
     el.innerText = "";
 
     const interval = setInterval(() => {
-        el.innerText += text[i];
-        i++;
-        if (i >= text.length) 
+        if (i < text.length) {
+            el.innerText += text.charAt(i);
+            i++;
+        } else {
             clearInterval(interval);
-        }, 30);
         }
+    }, text[i] === " " ? 10 : 30);
+}
+
+// Days Section by default
+window.onload = function() {
+    showSection("days");
+}
