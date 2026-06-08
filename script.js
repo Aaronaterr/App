@@ -127,3 +127,13 @@ function typeText(elementId, text) {
 window.onload = function() {
     showSection("days");
 }
+
+// Music
+function playMusic() {
+    const music = document.getElementById("musicPlayer");
+    if (music.paused) {
+        music.play();
+    } else {
+        music.pause();
+    }
+}

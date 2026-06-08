@@ -138,3 +138,20 @@ img {
     margin-top: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);   
 }
+
+/* Music */
+.music-container {
+    margin-top: 30px;
+}
+
+.music-button {
+    background-color: #ffffff;
+    color: #ffffff;
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+.music-button:hover {
+    background-color: #ffffff;
+    opacity: 1;
+}
