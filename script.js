@@ -17,7 +17,7 @@ function showLove() {
         "I am so grateful to have you in my life."
     ];
     const random = messages[Math.floor(Math.random() * messages.length)];
-    document.getElementById("love").innerText = random;
+    typeText("love", random);
 }
 
 // Memories
@@ -30,7 +30,7 @@ function showMemory() {
         "You make every day feel like a special occasion."
     ];
     const random = memories[Math.floor(Math.random() * memories.length)];
-    document.getElementById("memory").innerText = random;
+    typeText("memory", random);
 }
 
 function showPhoto() {
@@ -58,7 +58,7 @@ function openLetter(type) {
     if (type === "sleep") {
         message = "Good night, my love. Sweet dreams.";
     }
-    document.getElementById("letterText").innerText = message;
+    typeText("letterText", message);
 }
 
 function showSection(section) {
@@ -101,3 +101,16 @@ function showSection(section) {
         document.getElementById("lettersSection").style.display = "block";
     }
 }
+
+function typeText(elementId, text) {
+    let i = 0;
+    const el = document.getElementById(elementId);
+    el.innerText = "";
+
+    const interval = setInterval(() => {
+        el.innerText += text[i];
+        i++;
+        if (i >= text.length) 
+            clearInterval(interval);
+        }, 30);
+        }

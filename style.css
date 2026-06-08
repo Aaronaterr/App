@@ -42,6 +42,8 @@ button {
     color: white;
     font-size: 15px;
     cursor: pointer;
+    width: 90%;
+    max-width: 300px;
 }
 
 button.hover {
@@ -105,4 +107,8 @@ html, body {
 
 * {
     -webkit-tap-highlight-color: transparent;
+}
+
+.section p {
+    margin-top: 15px;
 }
