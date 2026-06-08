@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Year</title>
+    <p style="opacity:0.7;">Version 1.0 - Built together with my best bud</p>"
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Our First Year</h1>
+
+        <!-- Menu -->
+        <div class="menu">
+            <button onclick="showSection('home')">Home</button>
+            <button onclick="showSection('love')">Reasons I haven't left yet</button>
+            <button onclick="showSection('memory')">Memory</button>
+            <button onclick="showSection('photo')">Photos</button>
+            <button onclick="showSection('letters')">Letters</button>
+        </div>
+
+        <!-- Home -->
+        <div id="home" class="section">
+            <p id="days"></p>
+        </div>
+
+        <!-- Love -->
+        <div id="loveSection" class="section" style="display:none;">
+            <button onclick="showLove()">Show Message</button>
+            <p id="love"></p>
+        </div>
+
+        <!-- Memory -->
+        <div id="memorySection" class="section" style="display:none;">
+            <button onclick="showMemory()">Pick Memory</button>
+            <p id="memory"></p>
+        </div>
+
+        <!-- Photos -->
+        <div id="photoSection" class="section" style="display:none;">
+            <button onclick="showPhoto()">Show Photo</button>
+            <br><br>
+            <img id="photo" src="" width="300" style="display:none; border-radius: 12px;">
+        </div>
+
+        <!-- Letters -->
+        <div id="lettersSection" class="section" style="display:none;">
+            <h2>Open When...</h2>
+
+            <button onclick="openLetter('sad')">Open when you're sad</button>
+            <button onclick="openLetter('miss')">Open when you miss me</button>
+            <button onclick="openLetter('sleep')">Open when you can't sleep</button>
+
+            <p id="letterText" style="margin-top:20px;"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
