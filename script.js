@@ -47,15 +47,9 @@ function updateTimeTogether() {
     const seconds = Math.floor((diff / 1000) % 60);
 
     document.getElementById("daysNumber").innerText = days;
-
-    const output =
-    
-        hours + " hours\n\n" +
-        minutes + " minutes\n\n" +
-        seconds + " seconds\n\n" +
-        "and you still haven't dumped me. Yet.";
-
-    document.getElementById("daysText").innerText = output;
+    document.getElementById("hoursNumber").innerText = hours;
+    document.getElementById("minutesNumber").innerText = minutes;
+    document.getElementById("secondsNumber").innerText = seconds;
 }
 
 updateTimeTogether();

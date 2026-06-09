@@ -238,3 +238,28 @@ img {
     border: none;
     display: block;
 }
+
+/* Timer */
+
+.time-breakdown {
+    margin-top: 10px;
+}
+
+.time-row {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 6px;
+    margin: 4px 0;
+}
+
+.time-number {
+    font-size: 28px;
+    font-weight: bold;
+    color: #e63946;
+}
+
+.time-label {
+    font-size: 14px;
+    color: #333;
+}
