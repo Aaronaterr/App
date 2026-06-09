@@ -18,8 +18,8 @@
             <h2 class="menu-title">Still Under Review</h2>
             <p class="menu-subtitle">Select how you would like to assess:</p>
 
-            <button onclick="showSection('days')">Currrent Sentence</button>
-            <button onclick="showSection('love')">Reasons I haven't left yet</button>
+            <button onclick="showSection('days')">Current Sentence</button>
+            <button onclick="showSection('risk')">Risk Assessment</button>
             <button onclick="showSection('photo')">Photo Memories</button>
             <button onclick="showSection('form')">Annual Performance Review</button>
             <button onclick="showSection('question')">The Final Question</button>
@@ -38,14 +38,15 @@
             <p id="daysText" class="days-text"></p>
         </div>
 
-        <!-- Love -->
-        <div id="loveSection" class="section" style="display:none;">
+        <!-- Risk -->
+        <div id="riskSection" class="section" style="display:none;">
 
             <button class="back-button" onclick="showSection('menu')">← Menu</button>
 
-            <p id="love" class="body-text"></p>
+            <h2 class="section-title">⚠️ Risk Assessment</h2>
+            <p id="riskOutput" class="body-text"></p>
 
-            <button onclick="showLove()">Show Message</button>
+            <button onclick="generateRisk()">Reassess</button>
         </div>
 
 
@@ -56,7 +57,7 @@
 
             <button onclick="showPhoto()">Show Photo</button>
             <br><br>
-            <img id="photo" src="" width="300" style="display:none; border-radius: 12px;">
+            <img id="photo" class="app-photo" src="" width="300" style="display:none; border-radius: 12px;">
         </div>
 
         <!-- Form -->
@@ -102,7 +103,7 @@
                 <source src="music/ocean eyes.mp3" type="audio/mpeg"> 
             </audio>
                 <button onclick="playMusic()" class="music-button">
-                🎵👀
+                🎵  👀
                 </button>
         </div>
        

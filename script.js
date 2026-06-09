@@ -1,69 +1,100 @@
-// Days together
-const startDate = new Date("2025-06-14");
-const today = new Date();
-const diffTime = today - startDate;
-const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+// Image Preload
+const photos = [
+    "images/1.jpg",
+    "images/2.jpg",
+    "images/3.jpg",
+    "images/4.jpg",
+    "images/5.jpg",
+    "images/6.jpg",
+    "images/7.jpg",
+    "images/8.jpg",
+    "images/9.jpg",
+    "images/10.jpg",
+    "images/11.jpg",
+    "images/12.jpg",
+    "images/13.jpg",
+    "images/14.jpg",
+    "images/15.jpg",
+    "images/16.jpg",
+    "images/17.jpg",
+    "images/18.jpeg",
+    "images/19.jpg",
+    "images/20.jpg",
+    "images/21.jpg",
+    "images/22.jpg",
+    "images/23.jpg"
+];
 
-document.getElementById("daysNumber").innerText = days;
-document.getElementById("daysText").innerText =
-       " and you still haven't dumped me. Yet."
-  
+const preloadedImages = [];
 
-// Love messages
-function showLove() {
-    const messages = [
-        "You’re so beautiful",
-        "Your eyes are my favourite thing about you overall, I love them",
-        "Your hair, despite it getting everywhere, it’s pretty",
-        "Your nails, I have a thing for nails and you constantly have nice ones, plus they give the best scratches.",
-        "BOOBS, I think Amber said it best, they’re just right.",
-        "Your smile, specifically when laughing, it’s infectious.",
-        "You pay attention to my hobbies when you have no interest in them whatsoever.",
-        "I love it when you run your fingers through my hair, it melts me every time.",
-        "You’re so good with children it’s honestly just impressive at this point, they gravitate towards you and it’s such a relief to know that when I introduce you to Nelly I have nothing to worry about.",
-        "You put everyone before yourself, you’re very caring and nurturing and you look after your family with everything you have.",
-        "You make me laugh, you’re not as funny as me, but you can’t have it all.",
-        "I love your addiction to my butt, makes me feel desired.",
-        "I can be my full and true self around you.",
-        "I’m very self conscious about things like my overthinking and spiralling because of what others have said to me in the past, but you don’t make me feel like a burden. You acknowledge it, but you also don’t over panda to it. It’s the perfect combination of sympathy and a kick up the arse that I desperately need sometimes.",
-        "You’re cooking is out of this world, and you graciously let me have steaks so that I don’t feel useless in the kitchen.",
-        "I love how much you love reg, it’s cute.",
-        "I get to call you a cunt and take the piss out of you and you give it back instead of going in a strop.",
-        "I love your family. They’ve made me feel so welcome and I just appreciate them.",
-        "I really appreciate you pushing yourself out of your comfort zone to tell me things that make me feel good, like how you’ve never been cuddly before and how this feels different. I know you don’t usually outwardly show affection like that but you make an effort for me cause I’m a melt and need reassurance all the time. I feel heard because you take on what I’ve said and it makes me feel special, thank you.",
-        "You give very very good blowjobs.",
-        "You’re also talented with your hands.",
-        "I love your butt.",
-        "I really really like having sex with you, you barely have to do anything to get me going because I’m just that into you.",
-        "You were great with my family and particularly Lucy. That means a lot to me, not everyone can be like that around her and I appreciate it.",
-        "Just lying there watching TikToks separately is fun with you.",
-        "You know what I like already and can tell me if I’m going to enjoy a book or not. This is a superpower.",
-        "I love you a lot more than you think I do. You’re incredibly important to me, you make me very happy, very horny, and I just feel like I’m in such a good spot in life now that I’ve met you. And I’ll make sure that I do everything in my power to make you feel loved and cared for.",
-        "You make me feel special and you put up with my nonsense which is huge to me."
-    ];
-    const random = messages[Math.floor(Math.random() * messages.length)];
-    typeText("love", random);
+photos.forEach(src => {
+    const img = new Image();
+    img.src = src;
+    preloadedImages.push(img);
+});
+
+// Timer
+const startDate = new Date("2025-06-14T19:00:00"); 
+
+function updateTimeTogether() {
+    const now = new Date();
+    const diff = now - startDate;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 *24));
+
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    document.getElementById("daysNumber").innerText = days;
+
+    const output =
+    
+        hours + " hours\n\n" +
+        minutes + " minutes\n\n" +
+        seconds + " seconds\n\n" +
+        "and you still haven't dumped me. Yet.";
+
+    document.getElementById("daysText").innerText = output;
 }
 
+updateTimeTogether();
+setInterval(updateTimeTogether, 1000);
 
 // Photos
-function showPhoto() {
-    const photos = [
-        "images/Molly Aaron and Nell.jpg",
-        "images/Molly and Aaron 1.jpg",
-        "images/Molly and Aaron.jpg",
-        "images/Molly and Nell.jpg",
-    ];
-    const random = photos[Math.floor(Math.random() * photos.length)];
+let photoQueue = [];
+shufflePhotos();
 
-    const img = document.getElementById("photo");
-    img.src = random;
-    img.style.display = "block";
+function shufflePhotos() {
+    photoQueue = [...photos];
+
+    for (let i = photoQueue.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [photoQueue[i], photoQueue[j]] = [photoQueue[j], photoQueue[i]];
+    }
+}
+
+function showPhoto() {
+    const imgEl = document.getElementById("photo");
+
+    if (photoQueue.length === 0) {
+        shufflePhotos();
+    }
+
+    const nextPhoto = photoQueue.pop();
+
+    imgEl.style.opacity = "0"
+
+    setTimeout(() => {
+        imgEl.src = nextPhoto;
+        imgEl.style.display = "block";
+        imgEl.style.opacity = "1";
+    }, 100);
 }
 
 // Navigation
 function showSection(section) {
-    const sections = ["menuSection", "daysSection", "loveSection", "photoSection", "formSection", "questionSection", "resultSection"];
+    const sections = ["menuSection", "daysSection", "riskSection", "photoSection", "formSection", "questionSection", "resultSection"];
     const music = document.getElementById("musicContainer");
 
         sections.forEach(id => {
@@ -75,7 +106,7 @@ function showSection(section) {
         let targetId = "";
         if (section === "menu") targetId = "menuSection";
         if (section === "days") targetId = "daysSection";
-        if (section === "love") targetId = "loveSection";
+        if (section === "risk") targetId = "riskSection";
         if (section === "photo") targetId = "photoSection";
         if (section === "form") targetId = "formSection";
         if (section === "question") targetId = "questionSection";
@@ -109,11 +140,16 @@ function showSection(section) {
         }, 10);
     
 
+        if (section === "risk") {
+                generateRisk();
+        }
+
+
     if (section === "days") {
         document.getElementById("daysSection").style.display = "block";
     }
-    if (section === "love") {
-        document.getElementById("loveSection").style.display = "block";
+    if (section === "risk") {
+        document.getElementById("riskSection").style.display = "block";
     }
     if (section === "photo") {
         document.getElementById("photoSection").style.display = "block";
@@ -233,3 +269,46 @@ function growYes() {
 function sayYes() {
     showSection("result");
 }
+
+//Risk
+
+const threatLevels = [
+    "LOW (suspiciously calm)",
+    "MEDIUM (not ideal)",
+    "HIGH (start apologising)",
+    "CRITICAL (seriously reconsider choices)"
+];
+
+const incidents = [
+    "Caught not listening again",
+    "Mentioned paying for the laptop and phone... AGAIN",
+    "Said 'Pants'",
+    "Referred to sex in ridiculous manner (i.e. Romping)",
+    "Farted too many times in small space of time",
+    "Gave Nelly pizza",
+    "Had a chinese without Molly",
+    "Told another terrible Dad joke",
+];
+
+const actions = [
+    "Apologise immediately",
+    "Give emergancy massage",
+    "Offer back tickles",
+    "Stop talking... quickly.",
+    "Take her to Oriental Palace (only applicable if on a Sunday)",
+    "Get the emergancy Dairylea Dunkers",
+];
+
+function generateRisk() {
+    const riskEl = document.getElementById("riskOutput");
+
+    const threat = threatLevels[Math.floor(Math.random() * threatLevels.length)];
+    const incident = incidents[Math.floor(Math.random() * incidents.length)];
+    const action = actions[Math.floor(Math.random() * actions.length)];
+
+    riskEl.innerText = 
+        "Threat Level: " + threat + "\n\n" +
+        "Current Issue: " + incident + "\n\n" +
+        "Recommended Action: " + action;
+}
+
