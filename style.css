@@ -175,6 +175,10 @@ button:active {
     align-items: center;
 }
 
+#noButton {
+    transition: all 0.15s linear;
+}
+
 /* Images */
 img {
     margin-top: 15px;

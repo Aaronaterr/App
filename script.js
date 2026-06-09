@@ -68,6 +68,7 @@ function openLetter(type) {
 // Navigation
 function showSection(section) {
     const sections = ["menuSection", "daysSection", "loveSection", "memorySection", "photoSection", "lettersSection", "questionSection", "resultSection"];
+    const music = document.getElementById("musicContainer");
 
         sections.forEach(id => {
             const el = document.getElementById(id);
@@ -84,6 +85,12 @@ function showSection(section) {
         if (section === "letters") targetId = "lettersSection";
         if (section === "question") targetId = "questionSection";
         if (section === "result") targetId = "resultSection";
+
+        if (section === "question") {
+            music.style.display = "none";
+        } else {
+            music.style.display = "block"
+        }
 
         const target = document.getElementById(targetId);
         target.style.display = "block";
@@ -165,9 +172,15 @@ function growYes() {
 
     noButton.style.opacity = Math.max(0, 1 - noClicks * 0.05);
 
-    const x = Math.random() * 40 - 20;
-    const y = Math.random() * 40 - 20;
-    noButton.style.transform = `translate(${x}px, ${y}px)`;
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+    
+    const x = Math.random() * (screenWidth - 100);
+    const y = Math.random() * (screenHeight - 100);
+
+    noButton.style.position = "fixed";
+    noButton.style. left = x + "px";
+    noButton.style.top = y + "px";
 
     if(noClicks > 2) {
         noButton.innerText = "...really?";
