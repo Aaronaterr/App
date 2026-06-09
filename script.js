@@ -67,7 +67,7 @@ function openLetter(type) {
 
 // Navigation
 function showSection(section) {
-    const sections = ["daysSection", "loveSection", "memorySection", "photoSection", "lettersSection"];
+    const sections = ["menuSection", "daysSection", "loveSection", "memorySection", "photoSection", "lettersSection", "questionSection", "resultSection"];
 
         sections.forEach(id => {
             const el = document.getElementById(id);
@@ -76,11 +76,14 @@ function showSection(section) {
         });
 
         let targetId = "";
+        if (section === "menu") targetId = "menuSection";
         if (section === "days") targetId = "daysSection";
         if (section === "love") targetId = "loveSection";
         if (section === "memory") targetId = "memorySection";
         if (section === "photo") targetId = "photoSection";
         if (section === "letters") targetId = "lettersSection";
+        if (section === "question") targetId = "questionSection";
+        if (section === "result") targetId = "resultSection";
 
         const target = document.getElementById(targetId);
         target.style.display = "block";
@@ -105,6 +108,12 @@ function showSection(section) {
     if (section === "letters") {
         document.getElementById("lettersSection").style.display = "block";
     }
+    if (section === "question") {
+        document.getElementById("questionSection").style.display = "block";
+    }
+    if (section === "result") {
+        document.getElementById("resultSection").style.display = "block";
+    }
 }
 
 // Typing text effect
@@ -125,7 +134,7 @@ function typeText(elementId, text) {
 
 // Days Section by default
 window.onload = function() {
-    showSection("days");
+    showSection("menu");
 }
 
 // Music
@@ -136,4 +145,72 @@ function playMusic() {
     } else {
         music.pause();
     }
+}
+
+//Grow Yes Button
+let yesSize = 16;
+let noClicks = 0;
+
+function growYes() {
+    noClicks++;
+    yesSize += 4;
+    
+    const yesButton = document.getElementById("yesButton");
+    const noButton = document.getElementById("noButton");
+
+    yesButton.style.fontSize = yesSize + "px";
+    yesButton.style.padding = `${10 + noClicks * 2}px ${20 + noClicks * 5}px`;
+
+    yesButton.style.flexGrow = noClicks;
+
+    noButton.style.opacity = Math.max(0, 1 - noClicks * 0.05);
+
+    const x = Math.random() * 40 - 20;
+    const y = Math.random() * 40 - 20;
+    noButton.style.transform = `translate(${x}px, ${y}px)`;
+
+    if(noClicks > 2) {
+        noButton.innerText = "...really?";
+    }
+
+    if(noClicks > 5) {
+        noButton.innerText = "be serious";
+        yesButton.innerText = "YES ✅";
+    }
+
+    if(noClicks > 8) {
+        noButton.innerText = "just press yes";
+    }
+
+    if(noClicks > 15) {
+        noButton.style.display = "none";
+        
+        yesButton.style = ""
+
+        yesButton.style.position = "fixed";
+        yesButton.style.top = "0";
+        yesButton.style.left = "0";
+        yesButton.style.width = "100vw";
+        yesButton.style.height = "100vh";
+
+        yesButton.style.margin = "0";
+        yesButton.style.padding = "0";
+
+        yesButton.style.maxWidth = "none";
+
+        yesButton.style.zIndex = "9999";
+        yesButton.style.borderRadius = "0";
+
+        yesButton.style.display = "flex";
+        yesButton.style.justifyContent = "center";
+        yesButton.style.alignItems = "center";
+
+        yesButton.style.fontSize = "48px";
+    }
+
+
+}
+
+function sayYes() {
+    showSection("result");
 }
