@@ -89,7 +89,21 @@ function showSection(section) {
         if (section === "question") {
             music.style.display = "none";
         } else {
-            music.style.display = "block"
+            music.style.display = "block "
+        }
+
+        if (section === "question") {
+            yesSize = 16;
+            noClicks = 0;
+
+            const yesButton = document.getElementById("yesButton");
+            const noButton = document.getElementById("noButton");
+
+            yesButton.style = "";
+            yesButton.innerText = "Yes";
+
+            noButton.style = "";
+            noButton.innerText = "No (this won't go well)";
         }
 
         const target = document.getElementById(targetId);
