@@ -12,28 +12,39 @@ document.getElementById("daysText").innerText =
 // Love messages
 function showLove() {
     const messages = [
-        "I love you more than words can express.",
-        "You are my sunshine on a cloudy day.",
-        "Every moment with you is a treasure.",
-        "You complete me in every way.",
-        "I am so grateful to have you in my life."
+        "You’re so beautiful",
+        "Your eyes are my favourite thing about you overall, I love them",
+        "Your hair, despite it getting everywhere, it’s pretty",
+        "Your nails, I have a thing for nails and you constantly have nice ones, plus they give the best scratches.",
+        "BOOBS, I think Amber said it best, they’re just right.",
+        "Your smile, specifically when laughing, it’s infectious.",
+        "You pay attention to my hobbies when you have no interest in them whatsoever.",
+        "I love it when you run your fingers through my hair, it melts me every time.",
+        "You’re so good with children it’s honestly just impressive at this point, they gravitate towards you and it’s such a relief to know that when I introduce you to Nelly I have nothing to worry about.",
+        "You put everyone before yourself, you’re very caring and nurturing and you look after your family with everything you have.",
+        "You make me laugh, you’re not as funny as me, but you can’t have it all.",
+        "I love your addiction to my butt, makes me feel desired.",
+        "I can be my full and true self around you.",
+        "I’m very self conscious about things like my overthinking and spiralling because of what others have said to me in the past, but you don’t make me feel like a burden. You acknowledge it, but you also don’t over panda to it. It’s the perfect combination of sympathy and a kick up the arse that I desperately need sometimes.",
+        "You’re cooking is out of this world, and you graciously let me have steaks so that I don’t feel useless in the kitchen.",
+        "I love how much you love reg, it’s cute.",
+        "I get to call you a cunt and take the piss out of you and you give it back instead of going in a strop.",
+        "I love your family. They’ve made me feel so welcome and I just appreciate them.",
+        "I really appreciate you pushing yourself out of your comfort zone to tell me things that make me feel good, like how you’ve never been cuddly before and how this feels different. I know you don’t usually outwardly show affection like that but you make an effort for me cause I’m a melt and need reassurance all the time. I feel heard because you take on what I’ve said and it makes me feel special, thank you.",
+        "You give very very good blowjobs.",
+        "You’re also talented with your hands.",
+        "I love your butt.",
+        "I really really like having sex with you, you barely have to do anything to get me going because I’m just that into you.",
+        "You were great with my family and particularly Lucy. That means a lot to me, not everyone can be like that around her and I appreciate it.",
+        "Just lying there watching TikToks separately is fun with you.",
+        "You know what I like already and can tell me if I’m going to enjoy a book or not. This is a superpower.",
+        "I love you a lot more than you think I do. You’re incredibly important to me, you make me very happy, very horny, and I just feel like I’m in such a good spot in life now that I’ve met you. And I’ll make sure that I do everything in my power to make you feel loved and cared for.",
+        "You make me feel special and you put up with my nonsense which is huge to me."
     ];
     const random = messages[Math.floor(Math.random() * messages.length)];
     typeText("love", random);
 }
 
-// Memories
-function showMemory() {
-    const memories = [
-        "Remember our first date at the park?",
-        "That time we got caught in the rain together.",
-        "Our trip to the beach last summer was unforgettable.",
-        "I cherish every moment we spend together.",
-        "You make every day feel like a special occasion."
-    ];
-    const random = memories[Math.floor(Math.random() * memories.length)];
-    typeText("memory", random);
-}
 
 // Photos
 function showPhoto() {
@@ -50,24 +61,9 @@ function showPhoto() {
     img.style.display = "block";
 }
 
-// Letters
-function openLetter(type) {
-    let message = "";
-    if (type === "sad") {
-        message = "Even in tough times, my love for you remains strong.";
-    }
-    if (type === "miss") {
-        message = "I miss you more than words can say.";
-    }
-    if (type === "sleep") {
-        message = "Good night, my love. Sweet dreams.";
-    }
-    typeText("letterText", message);
-}
-
 // Navigation
 function showSection(section) {
-    const sections = ["menuSection", "daysSection", "loveSection", "memorySection", "photoSection", "lettersSection", "questionSection", "resultSection"];
+    const sections = ["menuSection", "daysSection", "loveSection", "photoSection", "formSection", "questionSection", "resultSection"];
     const music = document.getElementById("musicContainer");
 
         sections.forEach(id => {
@@ -80,16 +76,15 @@ function showSection(section) {
         if (section === "menu") targetId = "menuSection";
         if (section === "days") targetId = "daysSection";
         if (section === "love") targetId = "loveSection";
-        if (section === "memory") targetId = "memorySection";
         if (section === "photo") targetId = "photoSection";
-        if (section === "letters") targetId = "lettersSection";
+        if (section === "form") targetId = "formSection";
         if (section === "question") targetId = "questionSection";
         if (section === "result") targetId = "resultSection";
 
-        if (section === "question") {
-            music.style.display = "none";
+        if (section === "menu") {
+            music.style.display = "block";
         } else {
-            music.style.display = "block "
+            music.style.display = "none";
         }
 
         if (section === "question") {
@@ -103,7 +98,7 @@ function showSection(section) {
             yesButton.innerText = "Yes";
 
             noButton.style = "";
-            noButton.innerText = "No (this won't go well)";
+            noButton.innerText = "No";
         }
 
         const target = document.getElementById(targetId);
@@ -120,14 +115,11 @@ function showSection(section) {
     if (section === "love") {
         document.getElementById("loveSection").style.display = "block";
     }
-    if (section === "memory") {
-        document.getElementById("memorySection").style.display = "block";
-    }
     if (section === "photo") {
         document.getElementById("photoSection").style.display = "block";
     }
-    if (section === "letters") {
-        document.getElementById("lettersSection").style.display = "block";
+    if (section === "form") {
+        document.getElementById("formSection").style.display = "block";
     }
     if (section === "question") {
         document.getElementById("questionSection").style.display = "block";

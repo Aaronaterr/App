@@ -18,18 +18,17 @@
             <h2 class="menu-title">Still Under Review</h2>
             <p class="menu-subtitle">Select how you would like to assess:</p>
 
-            <button onclick="showSection('days')">Days</button>
+            <button onclick="showSection('days')">Currrent Sentence</button>
             <button onclick="showSection('love')">Reasons I haven't left yet</button>
-            <button onclick="showSection('memory')">Memory</button>
-            <button onclick="showSection('photo')">Photos</button>
-            <button onclick="showSection('letters')">Letters</button>
-            <button onclick="showSection('question')">The Big Question</button>
+            <button onclick="showSection('photo')">Photo Memories</button>
+            <button onclick="showSection('form')">Annual Performance Review</button>
+            <button onclick="showSection('question')">The Final Question</button>
         </div>
 
         <!-- Days -->
         <div id="daysSection" class="section">
 
-            <button class="back-button" onclick="showSection('menu')">🏠 Menu</button>
+            <button class="back-button" onclick="showSection('menu')">← Menu</button>
 
             <p class="days-line"> You've been putting up with me for </p>
                 <div class="days-row">
@@ -42,52 +41,44 @@
         <!-- Love -->
         <div id="loveSection" class="section" style="display:none;">
 
-            <button class="back-button" onclick="showSection('menu')">🏠 Menu</button>
+            <button class="back-button" onclick="showSection('menu')">← Menu</button>
+
+            <p id="love" class="body-text"></p>
 
             <button onclick="showLove()">Show Message</button>
-            <p id="love"></p>
         </div>
 
-        <!-- Memory -->
-        <div id="memorySection" class="section" style="display:none;">
-
-            <button class="back-button" onclick="showSection('menu')">🏠 Menu</button>
-
-            <button onclick="showMemory()">Pick Memory</button>
-            <p id="memory"></p>
-        </div>
 
         <!-- Photos -->
         <div id="photoSection" class="section" style="display:none;">
 
-            <button class="back-button" onclick="showSection('menu')">🏠 Menu</button>
+            <button class="back-button" onclick="showSection('menu')">← Menu</button>
 
             <button onclick="showPhoto()">Show Photo</button>
             <br><br>
             <img id="photo" src="" width="300" style="display:none; border-radius: 12px;">
         </div>
 
-        <!-- Letters -->
-        <div id="lettersSection" class="section" style="display:none;">
+        <!-- Form -->
+        <div id="formSection" class="section" style="display:none;">
 
-            <button class="back-button" onclick="showSection('menu')">🏠 Menu</button>
+            <button class="back-button" onclick="showSection('menu')">← Menu</button>
 
-            <h2>Open When...</h2>
+            <h2 class="section-title">Annual Performance Review</h2>
+            <p class="body-text">Please complete honestly.</p>
 
-            <button onclick="openLetter('sad')">Open when you're sad</button>
-            <button onclick="openLetter('miss')">Open when you miss me</button>
-            <button onclick="openLetter('sleep')">Open when you can't sleep</button>
-
-            <p id="letterText" style="margin-top:20px;"></p>
+            <div class="form-container">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfl7ckoDDV_4sjHoJGPzfQF_bg46trcImVtU9HwlmfQl1aumQ/viewform?embedded=true" width="640" height="2412" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            </div>
         </div>
 
         <!-- Question -->
         <div id="questionSection" class="section" style="display:none;">
             
-            <button class="back-button" onclick="showSection('menu')">🏠 Menu</button>
+            <button class="back-button" onclick="showSection('menu')">← Menu</button>
             
-            <h2> The Big Question </h2>
-            <p> So.. what do you reckon? fancy it?</p>
+            <h2 class="section-title"> The Final Question </h2>
+            <p class="body-text" id="questionText"> So.. what do you reckon? fancy getting married?</p>
 
 
             <div class="button-row">
@@ -98,8 +89,8 @@
 
         <div id="resultSection" class="section" style="display:none;">
             <h2>😂</h2>
-            <p>Stop panicking, its a joke.</p>
-            <p>(Took your time though)</p>
+            <p>jk jk.</p>
+            <p>(not even divorced yet, you homewrecker)</p>
 
             <button onclick="showSection('menu')">Back to safety</button>
 
