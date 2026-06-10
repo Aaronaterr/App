@@ -22,7 +22,6 @@ h1 {
 
 p {
     font-size: 18px;
-    white-space: pre-wrap;
 }
 
 html, body {
@@ -262,4 +261,93 @@ img {
 .time-label {
     font-size: 14px;
     color: #333;
+}
+
+/* Risk */
+
+#riskSection .risk-output {
+    text-align: center;
+    margin-top: 2px;
+}
+
+#riskSection .section-title {
+    margin-bottom: 26px;
+}
+
+#riskSection .risk-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    margin: 22px 0;
+}
+
+#riskSection .risk-block strong {
+    margin: 0;
+}
+
+#riskSection .risk-block span {
+    margin: 0;
+    line-height: 1.2;
+    white-space: pre-wrap;
+}
+
+#riskSection .risk-block:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    padding-bottom: 20px;
+}
+
+#riskSection strong {
+    opacity: 0.8;
+}
+
+.scan-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.scan-container::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: rgba(0, 0, 0, 0.1);
+
+    animation: scan 2.5s linear 1;
+    top: 0
+}
+
+@keyframes scan {
+    0% {
+        top: 0;
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        top: 100%;
+        opacity: 1;
+    }
+}
+
+#riskLevel {
+    transition: text-shadow 0.3s ease;
+}
+
+.glow-low {
+    text-shadow: 0 0 6px rgba(0, 128, 0, 0.4);
+}
+
+.glow-medium {
+    text-shadow: 0 0 8px rgba(255, 165, 0, 0.5);
+}
+
+.glow-high {
+    text-shadow: 0 0 10px rgba(255, 140, 0 , 0.6);
+}
+
+.glow-critical {
+    text-shadow: 0 0 14px rgba(255, 0, 0, 0.8);
 }

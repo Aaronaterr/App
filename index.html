@@ -65,9 +65,25 @@
             <button class="back-button" onclick="showSection('menu')">← Menu</button>
 
             <h2 class="section-title">⚠️ Risk Assessment</h2>
-            <p id="riskOutput" class="body-text"></p>
+            <div class="risk-output body-text scan-container">
+
+                <div class="risk-block">
+                    <strong>THREAT LEVEL:</strong><br>
+                    <span id="riskLevel"></span>
+                </div>
+                <div class="risk-block">
+                    <strong>CURRENT ISSUE:</strong><br>
+                    <span id="riskIssue"></span>
+                </div>
+                <div class="risk-block">
+                    <strong>RECOMMENDED ACTION:</strong><br>
+                    <span id="riskAction"></span>
+                </div>
+
+            </div>
 
             <button onclick="generateRisk()">Reassess</button>
+
         </div>
 
 

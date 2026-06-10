@@ -160,19 +160,19 @@ function showSection(section) {
 }
 
 // Typing text effect
-function typeText(elementId, text) {
-    let i = 0;
-    const el = document.getElementById(elementId);
-    el.innerText = "";
+function typeText(id, text, speed = 30) {
+    const el = document.getElementById(id);
+    el.innerHTML = "";
 
-    const interval = setInterval(() => {
+    let i = 0
+    function type() {
         if (i < text.length) {
-            el.innerText += text.charAt(i);
+            el.innerHTML += text.charAt(i);
             i++;
-        } else {
-            clearInterval(interval);
+            setTimeout(type, speed);
         }
-    }, text[i] === " " ? 10 : 30);
+    }
+    type();
 }
 
 // Days Section by default
@@ -294,15 +294,93 @@ const actions = [
 ];
 
 function generateRisk() {
-    const riskEl = document.getElementById("riskOutput");
+
+    const container = document.querySelector(".scan-container");
+
+    container.classList.remove("scan-container");
+    void container.offsetWidth;
+    container.classList.add("scan-container");
 
     const threat = threatLevels[Math.floor(Math.random() * threatLevels.length)];
     const incident = incidents[Math.floor(Math.random() * incidents.length)];
     const action = actions[Math.floor(Math.random() * actions.length)];
 
-    riskEl.innerText = 
-        "Threat Level: " + threat + "\n\n" +
-        "Current Issue: " + incident + "\n\n" +
-        "Recommended Action: " + action;
+    const riskLevelEl = document.getElementById("riskLevel");
+
+    riskLevelEl.classList.remove("glow-low", "glow-medium", "glow-high", "glow-critical");
+
+    riskLevelEl.style.color = getRiskColour(threat);
+
+        if (threat.includes("LOW")) riskLevelEl.classList.add("glow-low");
+        if (threat.includes("MEDIUM")) riskLevelEl.classList.add("glow-medium");
+        if (threat.includes("HIGH")) riskLevelEl.classList.add("glow-high");
+        if (threat.includes("CRITICAL")) riskLevelEl.classList.add("glow-critical");
+
+    riskLevelEl.style.color = getRiskColour(threat);
+
+    document.getElementById("riskLevel").innerHTML = "";
+    document.getElementById("riskIssue").innerHTML = "";
+    document.getElementById("riskAction").innerHTML = "";
+
+    typeThreat("riskLevel", threat);
+
+    setTimeout(() => {
+        typeText("riskIssue", incident); 
+    }, 900);
+
+    setTimeout(() => {
+        typeText("riskAction", action);
+    }, 1800);
 }
 
+function getRiskColour(threat) {
+
+    if (threat.includes("LOW")) return "green";
+    if (threat.includes("MEDIUM")) return "gold";
+    if (threat.includes("HIGH")) return "orange";
+    if (threat.includes("CRITICAL")) return "red";
+    return "black";
+
+}
+ 
+function typeThreat(id, threat) {
+    const el = document.getElementById(id);
+    const match = threat.match(/^([A-Z]+)(.*)$/);
+
+    if (!match) {
+        typeText(id, threat);
+        return;
+    }
+
+    const main = match[1];
+    const rest = match[2];
+
+    el.innerHTML = "";
+
+    const strong = document.createElement("strong");
+    const span = document.createElement("span");
+
+    span.style.display = "inline";
+
+    el.appendChild(strong);
+    el.appendChild(span);
+
+    typeTextIntoElement(strong, main);
+    setTimeout(() => {
+        typeTextIntoElement(span, rest);
+    }, main.length * 30);
+}
+
+function typeTextIntoElement(el, text, speed = 30) {
+    el.innerText = "";
+
+    let i = 0;
+    function type() {
+        if (i < text.length) {
+            el.innerText += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        }
+    }
+    type();
+}
